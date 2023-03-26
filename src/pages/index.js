@@ -17,7 +17,7 @@ async function addName(name) {
     }
 }
 
-async function removeName(text) {
+async function removeName() {
     while (document.getElementById("title-name").innerText !== "") {
         document.getElementById("title-name").innerText = document.getElementById("title-name").innerText.slice(0, -1)
         await sleep(100)
@@ -109,7 +109,7 @@ export default function Home(props) {
                             </div>
                         </div>
                     </div>
-                    <Link href="#about-me" className="w-8 h-8 text-text-secondary absolute left-0 right-0 bottom-0 mb-10 mx-auto animate-bounce" scroll={false}>
+                    <Link href="#about-me" className="w-10 h-10 text-text-secondary absolute left-0 right-0 bottom-0 mb-10 mx-auto animate-bounce" scroll={false}>
                         <ArrowDownIcon/>
                     </Link>
                 </div>

@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --vh: 1vh;
+    --text-main:rgb(19,19,19);
+    --text-secondary: rgb(60,60,60);
+    --main:rgb(235,235,235);
+    --secondary:rgb(228,228,228);
+}
+.dark{
+    --text-main:rgb(255,255,255);
+    --text-secondary: rgb(220,220,220);
+    --main:rgb(19,19,19);
+    --secondary:rgb(29,29,29);
+}
+.safe-h-screen {
+    height: 100svh;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.2s ease;
+}
+/* some part of the design are inspired from https://nekidev.com/, this transition has been copied, I'm not really good at transitions*/
+.sourced-image:hover > div {
+    --tw-translate-y: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    opacity: 1;
+}
+
+.app-content-limiter{
+    max-width: 1300px;
+}
+
+.name-linear-gradient{
+    background-clip :text;
+    -webkit-background-clip : text !important;
+    -webkit-text-fill-color : transparent !important;
+    background-size: 400% 400%;
+    background: linear-gradient(-45deg,#6bc5f8,#cf59e6,#6bc5f8,#cf59e6);
+    -webkit-animation: gradient 3s ease infinite;
+    animation: gradient 3s ease infinite;
+}
+.code-block pre, .code-block pre b{
+    font-size: 3.25vw;
+    font-family : 'Montserrat', sans-serif;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 420px) {
+    .code-block pre, .code-block pre b{
+        font-size: 1rem;
+    }
+    #code-block-container{
+        width:auto;
+    }
+}
+.font-roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-grid {
+    display: grid;
+    width: 100%;
+    grid-gap: 6rem;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+}

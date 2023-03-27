@@ -17,6 +17,7 @@
 }
 .safe-h-screen {
     height: 100svh;
+    height: 100vh;
 }
 * {
     box-sizing: border-box;

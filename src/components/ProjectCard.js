@@ -2,7 +2,7 @@ import GitHubIcon from "@/components/GitHubIcon";
 
 export default function ProjectCard(props){
     return(
-        <div className="shadow-lg border-gray-300 border dark:border-none dark:bg-secondary rounded-lg overflow-hidden w-full h-full flex flex-col justify-between">
+        <div className="shadow-lg border-gray-300 border dark:border-none dark:bg-secondary rounded-xl overflow-hidden w-full h-full flex flex-col justify-between">
             {
                 props.info['image_uri'] && (
                     <img src={props.info['image_uri']} className="w-full h-36 object-cover" alt=""/>

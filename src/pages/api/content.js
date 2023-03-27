@@ -3,7 +3,7 @@ import pool from "../../../lib/database";
 export default async function handler(req, res) {
     try{
         let result = {};
-        let language = req.query.language.toUpperCase();
+        let language = req.query.language.toLowerCase();
         if (!language){
             return res.status(400).json({detail:"language is a required parameter."})
         }

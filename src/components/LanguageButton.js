@@ -15,7 +15,7 @@ function LanguageButton(props){
         }
     }
     const handleClick = () => {
-        const newLanguage = language === 'EN' ? 'FR' : 'EN'
+        const newLanguage = language === 'en' ? 'fr' : 'en'
         document.cookie = `currentLanguage=${newLanguage};path=/`;
         fetchLanguage(newLanguage).then(r =>  {
             if (r){
@@ -26,7 +26,7 @@ function LanguageButton(props){
     return (
         <button onClick={handleClick} className="font-semibold flex bg-secondary text-text-main px-2 py-1 rounded-xl border border-1g dark:border-gray-500 hover:dark:border-gray-400 transition ease-in-out duration-300 items-center">
             <ArrowPathIcon className="h-5 w-5 mr-2"/>
-            {language === 'EN' ? 'FR' : 'EN'}
+            {language === 'en' ? 'FR' : 'EN'}
         </button>
     )
 }

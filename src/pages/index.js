@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import {ArrowDownIcon} from "@heroicons/react/20/solid";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
+import parser from "accept-language-parser"
 
 
 
@@ -62,11 +63,16 @@ export default function Home(props) {
             </div>
         )
     }
+    let title = "Salut, je m'appelle "
+    if(result.general.language === 'en'){
+        title = "Hi, I'm "
+    }
+    title += result.general['name'].split(' ')[0]
     return (
         <div className="app-content-limiter mx-auto">
             <Head>
-                <title>{"Hi, I'm " + result.general['pseudo']}</title>
-                <meta property="og:title" content={"Hi, I'm " + result.general['pseudo']}/>
+                <title>{title}</title>
+                <meta property="og:title" content={title}/>
                 <meta name="description" content="Hi, don't hesitate to visit my portfolio."/>
                 <link rel="icon" href={result.general['icon_uri']}/>
                 <meta property="og:image" content={result.general['icon_uri']}/>
@@ -158,9 +164,8 @@ export default function Home(props) {
 
 export async function getServerSideProps({ req, res }) {
     let result = null;
-    const language = req.cookies['currentLanguage']
-
-    let {rows} = await pool.query('SELECT * FROM general WHERE language = $1 LIMIT 1', [language || 'EN'])
+    const language = req.cookies['currentLanguage'] || parser.pick(['fr','en'], req.headers['accept-language'], {loose:true}).toLowerCase() || 'en'
+    let {rows} = await pool.query('SELECT * FROM general WHERE language = $1 LIMIT 1', [language])
     if (rows.length <= 0){
         rows = (await pool.query('SELECT * FROM general WHERE language = $1 LIMIT 1', [language])).rows;
     }
@@ -168,7 +173,7 @@ export async function getServerSideProps({ req, res }) {
     if(rows.length > 0){
         result = {}
         result.general = rows[0]
-        result.projects = (await pool.query('SELECT * FROM projects WHERE not is_hidden AND language = $1 ORDER BY id DESC', [language || 'EN'])).rows;
+        result.projects = (await pool.query('SELECT * FROM projects WHERE not is_hidden AND language = $1 ORDER BY id DESC', [language])).rows;
     }
 
     return {props: {dbResult: result}};

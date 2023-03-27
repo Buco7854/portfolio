@@ -6,6 +6,7 @@ Welcome to my portfolio! This website was built using Next.js, a React framework
 
 - Responsive design that looks great on any device
 - Integration with PostgreSQL database for storing general data and project information
+- Support for French and English
 
 ## Technologies Used
 

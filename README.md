@@ -18,4 +18,4 @@ Welcome to my portfolio! This website was built using Next.js, a React framework
 
 ## Visit My Portfolio
 
-To view my portfolio, please visit [https://www.grimbert.xyz](https://www.grimbert.xyz)
+To view my portfolio, please visit [https://www.grimbert.net](https://www.grimbert.xyz)

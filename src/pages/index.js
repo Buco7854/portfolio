@@ -7,6 +7,7 @@ import {ArrowDownIcon} from "@heroicons/react/20/solid";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import parser from "accept-language-parser"
+import {useTheme} from "next-themes";
 
 
 
@@ -38,8 +39,13 @@ async function writeNames(general) {
 export default function Home(props) {
     let [result, setResult] = useState(props.dbResult)
     let lock = useRef(false)
+    const [mounted, setMounted] = useState(false)
+    const {theme, setTheme} = useTheme()
+    useEffect(() => {
+        setMounted(true)
+    }, [])
     useEffect(()=>{
-        if (!lock.current && result){
+        if (!lock.current && result && mounted){
              const temp = async () => {
                  while (true){
                      lock.current = true
@@ -49,6 +55,9 @@ export default function Home(props) {
              temp().then()
         }
     },[result])
+    if (!mounted) {
+        return null
+    }
     if (!props.dbResult){
         return(
             <div className="px-5 py-5">
@@ -57,7 +66,7 @@ export default function Home(props) {
                     <meta name="description" content="Hi, don't hesitate to visit my portfolio."/>
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <meta property="og:site_name" content="www.grimbert.xyz"/>
-                    <meta name="theme-color" content="#6366F1" data-react-helmet="true"/>
+                    <meta name="theme-color" content={theme === 'dark' ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
                 </Head>
                 <div className="text-4xl text-center">Sorry, Something Went Wrong.</div>
             </div>
@@ -68,6 +77,7 @@ export default function Home(props) {
         title = "Hi, I'm "
     }
     title += result.general['name'].split(' ')[0]
+    console.log(theme)
     return (
         <div className="app-content-limiter mx-auto">
             <Head>
@@ -77,7 +87,7 @@ export default function Home(props) {
                 <link rel="icon" href={result.general['icon_uri']}/>
                 <meta property="og:image" content={result.general['icon_uri']}/>
                 <meta property="og:site_name" content="www.grimbert.xyz"/>
-                <meta name="theme-color" content="#6366F1" data-react-helmet="true"/>
+                <meta name="theme-color" content={theme === 'dark' ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
             <Navbar result={result} setResult={setResult}/>

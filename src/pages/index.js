@@ -61,7 +61,7 @@ export default function Home(props) {
                     <meta name="description" content="Hi, don't hesitate to visit my portfolio."/>
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <meta property="og:site_name" content="www.grimbert.xyz"/>
-                    <meta name="theme-color" content={theme === 'dark' || !mounted ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
+                    <meta name="theme-color" content={theme === 'dark' || !mounted ? '#080808':'#EBEBEB'} data-react-helmet="true"/>
                 </Head>
                 <div className="text-4xl text-center">Sorry, Something Went Wrong.</div>
             </div>
@@ -81,7 +81,7 @@ export default function Home(props) {
                 <link rel="icon" href={result.general['icon_uri']}/>
                 <meta property="og:image" content={result.general['icon_uri']}/>
                 <meta property="og:site_name" content="www.grimbert.xyz"/>
-                <meta name="theme-color" content={theme === 'dark' || !mounted ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
+                <meta name="theme-color" content={theme === 'dark' || !mounted ? '#080808':'#EBEBEB'} data-react-helmet="true"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
             <Navbar result={result} setResult={setResult}/>

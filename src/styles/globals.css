@@ -13,7 +13,7 @@
     --text-main:rgb(255,255,255);
     --text-secondary: rgb(220,220,220);
     --main:rgb(8,8,8);
-    --secondary:rgb(29,29,29);
+    --secondary:rgb(26,26,26);
 }
 .safe-h-screen {
     height: 100svh;

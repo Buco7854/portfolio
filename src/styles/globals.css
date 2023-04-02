@@ -12,8 +12,8 @@
 .dark{
     --text-main:rgb(255,255,255);
     --text-secondary: rgb(220,220,220);
-    --main:rgb(8,8,8);
-    --secondary:rgb(26,26,26);
+    --main:rgb(8,8,8 );
+    --secondary:rgb(27,27,27);
 }
 .safe-h-screen {
     height: 100svh;

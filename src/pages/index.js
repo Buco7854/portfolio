@@ -155,7 +155,7 @@ export default function Home(props) {
                 </div>
                 <div id="projects" className="flex gap-y-16 flex-col pt-32 pb-16">
                     <h1 className="text-4xl font-bold">{result.general['projects_title']}</h1>
-                    <div className="grid grids-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grids-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                       {
                           result.projects.map((v) => (<ProjectCard info={v} key={'project-card-' + v['id']}/>))
                       }

@@ -7,12 +7,12 @@
     --text-main:rgb(19,19,19);
     --text-secondary: rgb(60,60,60);
     --main:rgb(235,235,235);
-    --secondary:rgb(228,228,228);
+    --secondary:rgb(220,220,220);
 }
 .dark{
     --text-main:rgb(255,255,255);
     --text-secondary: rgb(220,220,220);
-    --main:rgb(19,19,19);
+    --main:rgb(8,8,8);
     --secondary:rgb(29,29,29);
 }
 .safe-h-screen {

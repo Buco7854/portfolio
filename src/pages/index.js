@@ -2,7 +2,7 @@ import Head from "next/head"
 import pool from "lib/database";
 import sleep from "../utils/sleep"
 import Navbar from "@/components/Navbar";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {ArrowDownIcon} from "@heroicons/react/20/solid";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
@@ -41,11 +41,9 @@ export default function Home(props) {
     let lock = useRef(false)
     const [mounted, setMounted] = useState(false)
     const {theme, setTheme} = useTheme()
-    useEffect(() => {
-        setMounted(true)
-    }, [])
     useEffect(()=>{
-        if (!lock.current && result && mounted){
+        setMounted(true)
+        if (!lock.current && result){
              const temp = async () => {
                  while (true){
                      lock.current = true
@@ -55,9 +53,6 @@ export default function Home(props) {
              temp().then()
         }
     },[result])
-    if (!mounted) {
-        return null
-    }
     if (!props.dbResult){
         return(
             <div className="px-5 py-5">
@@ -66,7 +61,7 @@ export default function Home(props) {
                     <meta name="description" content="Hi, don't hesitate to visit my portfolio."/>
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <meta property="og:site_name" content="www.grimbert.xyz"/>
-                    <meta name="theme-color" content={theme === 'dark' ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
+                    <meta name="theme-color" content={theme === 'dark' || !mounted ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
                 </Head>
                 <div className="text-4xl text-center">Sorry, Something Went Wrong.</div>
             </div>
@@ -77,7 +72,6 @@ export default function Home(props) {
         title = "Hi, I'm "
     }
     title += result.general['name'].split(' ')[0]
-    console.log(theme)
     return (
         <div className="app-content-limiter mx-auto">
             <Head>
@@ -87,7 +81,7 @@ export default function Home(props) {
                 <link rel="icon" href={result.general['icon_uri']}/>
                 <meta property="og:image" content={result.general['icon_uri']}/>
                 <meta property="og:site_name" content="www.grimbert.xyz"/>
-                <meta name="theme-color" content={theme === 'dark' ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
+                <meta name="theme-color" content={theme === 'dark' || !mounted ? '#131313':'#EBEBEB'} data-react-helmet="true"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
             <Navbar result={result} setResult={setResult}/>
@@ -161,7 +155,7 @@ export default function Home(props) {
                 </div>
                 <div id="projects" className="flex gap-y-16 flex-col pt-32 pb-16">
                     <h1 className="text-4xl font-bold">{result.general['projects_title']}</h1>
-                    <div className="grid grids-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grids-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                       {
                           result.projects.map((v) => (<ProjectCard info={v} key={'project-card-' + v['id']}/>))
                       }

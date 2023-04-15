@@ -24,7 +24,7 @@ export default function ProjectCard(props){
                             props.info['repository_uri'] && (
                                 <a href={ props.info['repository_uri']} target="_blank" className="justify-center w-full text-xl bg-indigo-400 text-white rounded-md flex items-center py-1 px-2 hover:brightness-90">
                                     <GitHubIcon className={"h-6 w-6 text-white mr-2"}/>
-                                    {props.info['repository_button_text'] ? props.info['repository_button_text'] : (props.info['language'] === 'EN' ? 'Repository' : 'Dépôt')}
+                                    {props.info['repository_button_text'] ? props.info['repository_button_text'] : (props.info['language'] === 'en' ? 'Repository' : 'Dépôt')}
 
                                 </a>
                             )

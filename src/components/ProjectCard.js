@@ -16,7 +16,7 @@ export default function ProjectCard(props){
                         {
                             props.info['website_uri'] && (
                                 <a href={ props.info['website_uri']} target="_blank" className="justify-center w-full text-xl bg-emerald-400 text-white rounded-md flex items-center py-1 px-2 hover:brightness-90">
-                                    {props.info['language'] === 'EN' ? 'Website' : 'Site web'}
+                                    {props.info['language'] === 'en' ? 'Website' : 'Site web'}
                                 </a>
                             )
                         }

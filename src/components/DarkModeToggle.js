@@ -1,7 +1,6 @@
 import {MoonIcon, SunIcon} from "@heroicons/react/20/solid";
 import {useTheme} from "next-themes";
 import {useEffect, useState} from "react";
-import sleep from "@/utils/sleep";
 
 function DarkModeToggle() {
     const [mounted, setMounted] = useState(false)

@@ -1,8 +1,8 @@
 import Head from "next/head"
-import pool from "lib/database";
+import pool from "database/database";
 import sleep from "../utils/sleep"
 import Navbar from "@/components/Navbar";
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {ArrowDownIcon} from "@heroicons/react/20/solid";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";

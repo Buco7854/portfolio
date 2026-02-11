@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Warm neutrals + rose accent */
+  --color-surface: oklch(0.98 0.004 75);
+  --color-surface-alt: oklch(0.95 0.006 75);
+  --color-surface-strong: oklch(0.90 0.01 75);
+  --color-text: oklch(0.20 0.015 50);
+  --color-text-muted: oklch(0.45 0.015 50);
+  --color-accent: oklch(0.60 0.16 15);
+  --color-accent-hover: oklch(0.53 0.18 15);
+  --color-accent-subtle: oklch(0.93 0.04 15);
+  --color-border: oklch(0.88 0.008 75);
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-surface: oklch(0.16 0.004 270);
+  --color-surface-alt: oklch(0.20 0.006 270);
+  --color-surface-strong: oklch(0.25 0.008 270);
+  --color-text: oklch(0.92 0.005 75);
+  --color-text-muted: oklch(0.65 0.005 75);
+  --color-accent: oklch(0.72 0.14 15);
+  --color-accent-hover: oklch(0.78 0.12 15);
+  --color-accent-subtle: oklch(0.25 0.04 15);
+  --color-border: oklch(0.28 0.006 270);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Rich text content styles */
+.rich-text h1,
+.rich-text h2,
+.rich-text h3 {
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.rich-text h1 { font-size: 1.5rem; }
+.rich-text h2 { font-size: 1.25rem; }
+.rich-text h3 { font-size: 1.1rem; }
+.rich-text p { margin-bottom: 1em; line-height: 1.7; }
+.rich-text ul, .rich-text ol { margin-bottom: 1em; padding-left: 1.5em; }
+.rich-text ul { list-style-type: disc; }
+.rich-text ol { list-style-type: decimal; }
+.rich-text li { margin-bottom: 0.25em; }
+.rich-text a { color: var(--color-accent); text-decoration: underline; }
+.rich-text a:hover { color: var(--color-accent-hover); }
+.rich-text code {
+  background-color: var(--color-surface-alt);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: var(--font-mono);
+}
+.rich-text pre {
+  background-color: var(--color-surface-alt);
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+.rich-text pre code {
+  background: none;
+  padding: 0;
+}
+.rich-text img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+.rich-text blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1em;
+  margin-bottom: 1em;
+  color: var(--color-text-muted);
+}

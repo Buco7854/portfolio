@@ -1,0 +1,33 @@
+services:
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: portfolio-pocketbase
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      - PB_ADMIN_EMAIL=${PB_ADMIN_EMAIL}
+      - PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD}
+    command: --http=0.0.0.0:8090 --dir=/pb_data --publicDir=/pb_public --hooksDir=/pb_hooks --migrationsDir=/pb_migrations
+    volumes:
+      - ./pb_data:/pb_data
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nextjs:
+    image: ghcr.io/buco7854/portfolio:latest
+    container_name: portfolio-nextjs
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - POCKETBASE_INTERNAL_URL=${POCKETBASE_INTERNAL_URL}
+      - NEXT_PUBLIC_POCKETBASE_URL=${NEXT_PUBLIC_POCKETBASE_URL:-}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-}
+      - NODE_ENV=${NODE_ENV:-production}
+    depends_on:
+      pocketbase:
+        condition: service_healthy

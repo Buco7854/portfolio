@@ -83,6 +83,7 @@ export interface Item extends PBRecord {
 
 export interface Settings extends PBRecord {
   accent_color: string;
+  favicon: string;
 }
 
 export interface Resource extends PBRecord {

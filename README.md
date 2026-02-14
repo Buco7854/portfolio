@@ -6,14 +6,14 @@ A multilingual portfolio built with Next.js 16 and PocketBase.
 
 - **Frontend:** Next.js 16 (App Router), React 19, TypeScript 5.9
 - **Styling:** Tailwind CSS v4 with OKLCH color system, dark/light/system theme
-- **CMS:** PocketBase with JS migrations
+- **Admin UI:** PocketBase with JS migrations
 - **Deployment:** Docker Compose, GitHub Actions CI/CD
 
 ## Features
 
 - Dynamic multilingual support (English & French by default, extensible via PocketBase)
 - Browser Accept-Language detection with automatic redirect
-- PocketBase-configurable accent color (hex color picker in admin)
+- PocketBase-configurable accent color (hex color picker in admin) and favicon
 - Dark / light / system theme with no flash on load
 - Custom icon support (Lucide icons, raw SVG, or plain text)
 - Responsive layout with sidebar navigation on mobile
@@ -30,7 +30,7 @@ A multilingual portfolio built with Next.js 16 and PocketBase.
 | items       | Items within categories               |
 | projects    | Portfolio projects with tech stack    |
 | resources   | Attachable files/links for items or projects |
-| settings    | Singleton settings (accent color)     |
+| settings    | Singleton settings (accent color, favicon)     |
 
 ## Getting Started
 
